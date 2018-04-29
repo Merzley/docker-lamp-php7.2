@@ -66,7 +66,7 @@ RUN cp /files/mysql_user_script.sh / && \
 ##############################
 #           NODEJS           #
 ##############################
-    /files/nodejs_install_repository.sh && \
+    /bin/bash /files/nodejs_install_repository.sh && \
     apt-get -y install nodejs && \
 ##############################
 #           COMPOSER         #
