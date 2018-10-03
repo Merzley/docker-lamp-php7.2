@@ -1,4 +1,4 @@
-FROM debian:testing-slim
+FROM debian:testing
 
 EXPOSE 80/tcp
 EXPOSE 3306/tcp
