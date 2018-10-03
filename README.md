@@ -10,15 +10,17 @@
 
 ## Run container
 ```bash 
-docker run  \
+docker run \
 -itd \
--p 80:80 `#apache port` \ 
+-p 80:80 `#apache port` \
 -p 3306:3306 `#mysql port` \
 -v /path/to/db/storage:/var/lib/mysql \
 -v /path/to/project/root:/var/www \
 --env document_root=/src `#Document root for apache. Relative to project root` \
 --env host_uid=1000 \
 --env host_gid=1000 \
+--env PHP_IDE_CONFIG=serverName=server \
+--env xdebug_remote_host=172.17.0.1 \
 merzley/lamp-php7.2
 ```
 
@@ -125,4 +127,6 @@ xdebug.remote_connect_back = on
 xdebug.remote_port = 9000
 xdebug.remote_mode = req
 xdebug.idekey = XDEBUG_IDE_KEY
+
+;xdebug.remote_host = {{xdebug_remote_host environment varibale}}
 ```
