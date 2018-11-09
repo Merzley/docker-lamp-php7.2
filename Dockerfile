@@ -60,10 +60,16 @@ RUN cp /files/mysql_user_script.sh / && \
 ##############################
     apt-get -y install php7.2 && \
     apt-get -y install libapache2-mod-php7.2 && \
+    #<xdebug>
+    apt-get -y install php7.2-dev && \
+    apt-get -y install php-pear && \
+    pecl install xdebug && \
+    apt-get -y remove php-pear && \
+    apt-get -y remove php7.2-dev && \
+    #</xdebug>
     apt-get -y install php7.2-mbstring && \
     apt-get -y install php7.2-dom && \
     apt-get -y install php7.2-mysql && \
-    apt-get -y install php7.2-xdebug && \
     cp -r /files/etc/php/* /etc/php && \
 ##############################
 #           NODEJS           #
