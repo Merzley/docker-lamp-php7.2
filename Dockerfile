@@ -17,6 +17,7 @@ SHELL ["/bin/bash", "-c"]
 COPY files /files
 
 RUN cp /files/mysql_user_script.sh / && \
+    cp /files/etc/apt/sources.list /etc/apt/sources.list && \
 ##############################
 #          TIMEZONE          #
 ##############################
