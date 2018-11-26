@@ -64,6 +64,7 @@ RUN cp /files/mysql_user_script.sh / && \
     #<xdebug>
     apt-get -y install php7.2-dev && \
     apt-get -y install php-pear && \
+    pecl channel-update pecl.php.net && \
     pecl install xdebug && \
     apt-get -y remove php-pear && \
     apt-get -y remove php7.2-dev && \
