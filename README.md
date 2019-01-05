@@ -17,10 +17,10 @@ docker run \
 -v /path/to/db/storage:/var/lib/mysql \
 -v /path/to/project/root:/var/www \
 --env document_root=/src `#Document root for apache. Relative to project root` \
---env host_uid=1000 \
---env host_gid=1000 \
---env PHP_IDE_CONFIG=serverName=server \
---env xdebug_remote_host=172.17.0.1 \
+--env host_uid=1000 `#Optional. 1000 is default value` \
+--env host_gid=1000 `#Optional. 1000 is default value` \
+--env PHP_IDE_CONFIG=serverName=server `#Optional. serverName=server is default value` \
+--env xdebug_remote_host=172.17.0.1 `#Optional. 172.17.0.1 is default value` \
 merzley/lamp-php7.2
 ```
 
