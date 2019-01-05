@@ -24,12 +24,15 @@ RUN cp /files/mysql_user_script.sh / && \
     unlink /etc/localtime && \
     ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \
 ##############################
-#      MYSQL REPOSITORY      #
+#           TOOLS            #
 ##############################
     apt-get -y update && \
     apt-get -y install gnupg && \
+    apt-get -y install wget && \
+##############################
+#      MYSQL REPOSITORY      #
+##############################
     apt-key add /files/mysql_pubkey.asc && \
-    apt-get -y remove gnupg && \
     cp -r /files/etc/apt/* /etc/apt && \
 ##############################
 #        SYSTEM UPDATE       #
@@ -59,14 +62,16 @@ RUN cp /files/mysql_user_script.sh / && \
 ##############################
 #            PHP             #
 ##############################
+    wget -q https://packages.sury.org/php/apt.gpg -O- | apt-key add - && \
+    echo "deb https://packages.sury.org/php/ stretch main" | tee /etc/apt/sources.list.d/php.list && \
+    apt-get -y update && \
+    #
     apt-get -y install php7.2 && \
     apt-get -y install libapache2-mod-php7.2 && \
     #<xdebug>
     apt-get -y install php7.2-dev && \
-    apt-get -y install php-pear && \
-    pecl channel-update pecl.php.net && \
-    pecl install xdebug && \
-    apt-get -y remove php-pear && \
+    cd /files && tar -xzf ./xdebug-src.tar.gz && cd ./xdebug-src && \
+    phpize && ./configure --enable-xdebug && make && make install && \
     apt-get -y remove php7.2-dev && \
     #</xdebug>
     apt-get -y install php7.2-mbstring && \
