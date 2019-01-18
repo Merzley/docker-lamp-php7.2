@@ -21,6 +21,7 @@ docker run \
 --env host_gid=1000 `#Optional. 1000 is default value` \
 --env PHP_IDE_CONFIG=serverName=server `#Optional. serverName=server is default value` \
 --env xdebug_remote_host=172.17.0.1 `#Optional. 172.17.0.1 is default value` \
+--env xdebug_port=9000 `#Optional. 9000 is default value` \
 merzley/lamp-php7.2
 ```
 
